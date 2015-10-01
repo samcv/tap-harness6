@@ -147,21 +147,21 @@ package TAP {
 	}
 
 	class Result {
-		has Str $.name;
-		has Int $.tests-planned;
-		has Int $.tests-run;
-		has Int @.passed;
-		has Int @.failed;
-		has Str @.errors;
-		has Int @.actual-passed;
-		has Int @.actual-failed;
-		has Int @.todo;
-		has Int @.todo-passed;
-		has Int @.skipped;
-		has Int $.unknowns;
-		has Bool $.skip-all;
-		has Proc $.exit-status;
-		has Duration $.time;
+		has $.name;
+		has $.tests-planned;
+		has $.tests-run;
+		has @.passed;
+		has @.failed;
+		has @.errors;
+		has @.actual-passed;
+		has @.actual-failed;
+		has @.todo;
+		has @.todo-passed;
+		has @.skipped;
+		has $.unknowns;
+		has $.skip-all;
+		has $.exit-status;
+		has $.time;
 		method exit() {
 			$!exit-status.defined ?? $!exit-status.exitcode !! Int;
 		}
@@ -181,21 +181,21 @@ package TAP {
 	}
 
 	class Aggregator {
-		has Result %.results-for;
-		has Result @!parse-order;
+		has %.results-for;
+		has @!parse-order;
 
-		has Int $.parsed = 0;
-		has Int $.tests-planned = 0;
-		has Int $.tests-run = 0;
-		has Int $.passed = 0;
-		has Int $.failed = 0;
-		has Str @.errors;
-		has Int $.actual-passed = 0;
-		has Int $.actual-failed = 0;
-		has Int $.todo;
-		has Int $.todo-passed;
-		has Int $.skipped;
-		has Bool $.exit-failed = False;
+		has $.parsed = 0;
+		has $.tests-planned = 0;
+		has $.tests-run = 0;
+		has $.passed = 0;
+		has $.failed = 0;
+		has @.errors;
+		has $.actual-passed = 0;
+		has $.actual-failed = 0;
+		has $.todo = 0;
+		has $.todo-passed = 0;
+		has $.skipped = 0;
+		has $.exit-failed = False;
 
 		method add-result(Result $result) {
 			my $description = $result.name;

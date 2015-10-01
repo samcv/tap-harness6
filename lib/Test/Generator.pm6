@@ -17,7 +17,7 @@ package Test {
 			$!stream.emit(Test::Event::Plan.new(:tests(0), :skip-all, :explanation($skip-all)));
 		}
 
-		method test(Bool :$ok, TAP::Test::Description :$description is copy, TAP::Directive :$directive = TAP::No-Directive, TAP::Directive::Explanation :$explanation) {
+		method test(Bool :$ok, TAP::Test::Description :$description, TAP::Directive :$directive = TAP::No-Directive, TAP::Directive::Explanation :$explanation) {
 			$!stream.emit(Test::Event::Test.new(:$ok, :$description, :$directive, :$explanation));
 		}
 		method comment(Str $content) {
