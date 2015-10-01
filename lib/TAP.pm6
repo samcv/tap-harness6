@@ -952,7 +952,7 @@ class TAP::Harness {
 		my $kill = Promise.new;
 		my $aggregator = TAP::Aggregator.new();
 		my $reporter = $!reporter-class.new(:parallel($jobs > 1), :names(@.sources), :$timer, :$aggregator);
-		if $jobs > 1 {
+		if $jobs > 0 {
 			my $done = start {
 				for @!sources -> $name {
 					last if $kill;
