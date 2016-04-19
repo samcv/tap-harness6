@@ -207,7 +207,14 @@ grammar Grammar {
 		<.indent($indent)> <test>
 	}
 	token unknown {
-		\N*
+		<unknown-simple> | <invalid-subtest>
+	}
+	token unknown-simple {
+		<!before '    '> \N*
+	}
+	token invalid-subtest {
+		[ '    ' \N* ]+ % \n
+		\n <unknown-simple>
 	}
 	class Actions {
 		method TOP($/) {
